@@ -1,4 +1,4 @@
 package com.portfolio.controller;
 
-public class HomeController {
+public class RESTController {
 }
