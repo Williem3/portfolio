@@ -31,7 +31,4 @@ public class SkillServiceImpl implements SkillsService {
         return skillsDao.findLogos();
     }
 
-    public Skills get(int id) {
-        return skillsDao.get(id);
-    }
 }

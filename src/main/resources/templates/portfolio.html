@@ -247,27 +247,30 @@
 							<div class="col-6 col-12-medium">
 
 								<!-- Contact Form -->
-									<section>
-										<form method="post" action="#">
-											<div class="row gtr-50">
-												<div class="col-6 col-12-small">
-													<input type="text" name="name" id="contact-name" placeholder="Name" />
-												</div>
-												<div class="col-6 col-12-small">
-													<input type="text" name="email" id="contact-email" placeholder="Email" />
-												</div>
-												<div class="col-12">
-													<textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
-												</div>
-												<div class="col-12">
-													<ul class="actions">
-														<li><input type="submit" class="style1" value="Send" /></li>
-														<li><input type="reset" class="style2" value="Reset" /></li>
-													</ul>
-												</div>
-											</div>
-										</form>
-									</section>
+								<section>
+									<form method="post" th:action="@{/contact/send}" th:object="${email}" />
+									<div class="row gtr-50">
+										<div class="col-6 col-12-small">
+											<input type="text" name="name" th:value="*{name}" id="name"
+												   placeholder="Name" autocomplete="off" required="true"/>
+										</div>
+										<div class="col-6 col-12-small">
+											<input type="text" name="from" th:value="*{from}" id="from"
+												   placeholder="Email" autocomplete="off" required="true"/>
+										</div>
+										<div class="col-12">
+                                    <textarea name="content" id="contentPort" th:value="*{content}"
+											  placeholder="Message" autocomplete="off" rows="4"></textarea>
+										</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" class="style1" value="Send" /></li>
+												<li><input type="reset" class="style2" value="Reset" /></li>
+											</ul>
+										</div>
+									</div>
+									</form>
+								</section>
 
 							</div>
 							<div class="col-6 col-12-medium">
@@ -279,9 +282,9 @@
 												<section>
 													<h3 class="icon fa-home">Mailing Address</h3>
 													<p>
-														Untitled Corp<br />
-														1234 Somewhere Rd<br />
-														Nashville, TN 00000
+														Willie Mangram<br />
+														1952 Southwind Circle<br />
+														Pensacola, FL 32506
 													</p>
 												</section>
 											</div>
@@ -289,9 +292,8 @@
 												<section>
 													<h3 class="icon fa-comment">Social</h3>
 													<p>
-														<a href="#">@untitled-corp</a><br />
-														<a href="#">linkedin.com/untitled</a><br />
-														<a href="#">facebook.com/untitled</a>
+														<a href="#">github.com/williem3</a><br />
+														<a href="#">linkedin.com/wmangram3</a><br />
 													</p>
 												</section>
 											</div>
@@ -299,7 +301,7 @@
 												<section>
 													<h3 class="icon fa-envelope">Email</h3>
 													<p>
-														<a href="#">info@untitled.tld</a>
+														<a href="#">dev.wmangram@gmail.com</a>
 													</p>
 												</section>
 											</div>
@@ -307,7 +309,7 @@
 												<section>
 													<h3 class="icon fa-phone">Phone</h3>
 													<p>
-														(000) 555-0000
+														(850) 208-5624
 													</p>
 												</section>
 											</div>

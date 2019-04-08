@@ -1,6 +1,6 @@
 package com.portfolio.dao.CustomDao;
 
-import com.portfolio.entity.Skills;
+import com.portfolio.entity.Resume;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +12,6 @@ public interface CustomSkillsDao {
     @Query("SELECT logo from Skills")
     List<byte[]> findLogos();
 
-    @Query("SELECT logo from Skills where id=:id")
-    Skills get(int id);
+    @Query("SELECT file from Resume where id=:id")
+    Resume findById(long id);
 }

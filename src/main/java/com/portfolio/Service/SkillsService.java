@@ -8,6 +8,4 @@ public interface SkillsService {
     List<Skills> findSkillList(String wmangram);
 
     List<byte[]> findLogos();
-
-    Skills get(int id);
 }

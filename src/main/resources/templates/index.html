@@ -217,16 +217,19 @@
 
                     <!-- Contact Form -->
                     <section>
-                        <form method="post" action="#">
+                        <form method="post" th:action="@{/contact/send}" th:object="${email}" />
                             <div class="row gtr-50">
                                 <div class="col-6 col-12-small">
-                                    <input type="text" name="name" id="contact-name" placeholder="Name" />
+                                    <input type="text" name="name" th:value="*{name}" id="name"
+                                           placeholder="Name" autocomplete="off" required="true"/>
                                 </div>
                                 <div class="col-6 col-12-small">
-                                    <input type="text" name="email" id="contact-email" placeholder="Email" />
+                                    <input type="text" name="from" th:value="*{from}" id="from"
+                                           placeholder="Email" autocomplete="off" required="true"/>
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
+                                    <textarea name="content" id="content" th:value="*{content}"
+                                              placeholder="Message" autocomplete="off" rows="4"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <ul class="actions">
@@ -257,7 +260,7 @@
                                 <section>
                                     <h3 class="icon fa-comment">Social</h3>
                                     <p>
-                                        <a href="#">https://github.com/williem3</a><br />
+                                        <a href="#">github.com/williem3</a><br />
                                         <a href="#">linkedin.com/wmangram3</a><br />
                                     </p>
                                 </section>
