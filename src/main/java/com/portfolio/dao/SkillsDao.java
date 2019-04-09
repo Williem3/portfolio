@@ -11,4 +11,5 @@ public interface SkillsDao extends CrudRepository<Skills, Long>, CustomSkillsDao
 
     @Override
     List<byte[]> findLogos();
+
 }

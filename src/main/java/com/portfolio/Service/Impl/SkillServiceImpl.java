@@ -9,9 +9,11 @@ import com.portfolio.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class SkillServiceImpl implements SkillsService {
 
     @Autowired
@@ -27,8 +29,18 @@ public class SkillServiceImpl implements SkillsService {
         return skillsList;
     }
 
+    public List<Skills> getSkills() {
+        return skillsDao.findAll();
+    }
+
     public List<byte[]> findLogos() {
         return skillsDao.findLogos();
     }
+
+    public Skills createTechnology(Skills skills) {
+
+        return skillsDao.save(skills);
+    }
+
 
 }

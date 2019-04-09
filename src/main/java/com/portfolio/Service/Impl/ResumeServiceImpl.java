@@ -7,7 +7,10 @@ import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class ResumeServiceImpl implements ResumeService {
 
     @Autowired
@@ -16,5 +19,14 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public Resume findById(long id) {
         return resumeDao.findById(id);
+    }
+
+    public Resume updateResume(Resume resume) {
+
+        return resumeDao.save(resume);
+    }
+
+    public Resume getResume() {
+        return resumeDao.findById(1);
     }
 }
