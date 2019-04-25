@@ -1,9 +1,8 @@
 package com.portfolio.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.checkerframework.checker.units.qual.C;
+
+import javax.persistence.*;
 
 @Entity
 public class Resume {
@@ -11,6 +10,7 @@ public class Resume {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name="file")
     private byte[] file;
 
     public Resume() {

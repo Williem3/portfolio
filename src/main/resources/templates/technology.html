@@ -67,8 +67,14 @@
                                     <div class="container">
                                             <div class="container">
                                                 <div class="row" th:if="${userSkills.empty}">
-                                                    <td colspan="2"> No Skills Available </td>
+                                                    <div colspan="2"> No Skills Available </div>
                                                 </div>
+
+												<div th:if="${userImages.empty}" class="row">
+													<div class="skillsSpacing" th:each="userImage, iter : ${userImages}">
+														<div colspan="2"> No Logos Available </div>
+													</div>
+												</div>
 
                                                 <div class="row">
                                                     <div class="skillsSpacing" th:each="userImage, iter : ${userImages}">

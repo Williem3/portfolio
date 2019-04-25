@@ -13,9 +13,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>portfolio</name>
     <description>Portfolio project</description>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>11</java.version>
+        <tomcat.version>9.0.13</tomcat.version>
+
     </properties>
 
     <dependencies>
@@ -61,6 +64,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>27.1-jre</version>
@@ -69,6 +78,7 @@
 
 
     <build>
+        <finalName>portfolio</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

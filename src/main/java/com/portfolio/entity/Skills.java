@@ -11,6 +11,7 @@ public class Skills {
     private long id;
 
     private String techName;
+
     @Column(name = "logo")
     private byte[] logo;
 

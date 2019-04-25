@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <div>
+        <form name="newUser" id="myform">
+            First name:<br>
+            <input type="text" id="firstname" required/><br>
+            Last name:<br>
+            <input type="text" id="lastname" required/><br>
+            Username:<br>
+            <input type="text" id="username" required/><br>
+            Email:<br>
+            <input type="email" id="email" required/><br>
+            Phone Number:<br>
+            <input type="text" id="phonenumber" required/><br>
+
+            <button id="add-user">Add!</button>
+        </form>
+    </div>
+
+    <div>
+         <ul id="users"></ul>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.dropotron.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/breakpoints.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/apiPost.js"></script>
+
+</body>
+</html>

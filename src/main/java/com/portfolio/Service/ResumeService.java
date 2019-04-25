@@ -7,5 +7,7 @@ public interface ResumeService {
 
     Resume updateResume(Resume resume);
 
-    Resume getResume();
+    Resume getResume(long id);
+
+
 }
