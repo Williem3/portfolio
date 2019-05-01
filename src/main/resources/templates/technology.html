@@ -6,8 +6,6 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 	<body class="right-sidebar is-preload">
 		<div id="page-wrapper">
@@ -56,37 +54,19 @@
 			<!-- Highlights -->
 				<section id="highlights" class="wrapper style3">
 					<div class="title">Skills</div>
-					<div class="container">
+					<div class="container" style="width: 85%;">
 						<div class="row aln-center">
-							<div class="col-12 col-12-medium">
-								<section class="highlight">
-									<div class="container">
-                                            <div class="container">
-                                                <div class="row" th:if="${userSkills.empty}">
-                                                    <div colspan="2"> No Skills Available </div>
-                                                </div>
+								<div class="row col-1-medium col-4-small">
+									<div th:if="${userSkills.empty}">
+										<div colspan="2"> No Skills Available </div>
+									</div>
 
-												<div th:if="${userImages.empty}" class="row">
-													<div class="skillsSpacing" th:each="userImage, iter : ${userImages}">
-														<div colspan="2"> No Logos Available </div>
-													</div>
-												</div>
-
-                                                <div class="row">
-                                                    <div class="skillsSpacing" th:each="userImage, iter : ${userImages}">
-                                                        <img th:src="|data:image/jpg;base64,${userImage}|" style="width: 100px; height: 100px;"/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="skillsNameSpacing" th:each="skills : ${userSkills}">
-                                                        <span th:text="${skills.techName}"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-								</section>
-							</div>
+									<div th:each="userImage, iter : ${userImages}">
+										<img th:src="|data:image/jpg;base64,${userImage}|" style="width: 100px; height: 100px;"/>
+										<br><br>
+										<span th:text="${userSkills[__${iter.index}__].techName}"></span>
+									</div>
+								</div>
 						</div>
 					</div>
 				</section>
