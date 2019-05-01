@@ -42,5 +42,9 @@ public class SkillServiceImpl implements SkillsService {
         return skillsDao.save(skills);
     }
 
+    public void deleteSkill(long id) {
+        skillsDao.deleteById(id);
+    }
+
 
 }

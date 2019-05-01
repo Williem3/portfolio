@@ -6,17 +6,11 @@ import com.portfolio.Service.UserService;
 import com.portfolio.entity.Resume;
 import com.portfolio.entity.Skills;
 import com.portfolio.entity.User;
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -38,7 +32,8 @@ public class RESTController {
     public String uploadMultipartFile(@RequestParam("logo") MultipartFile file, @RequestParam("techName")String techName) {
         User user = userService.findByUsername("wmangram");
         try {
-            // save file to MySQL
+            // save file to MySQL, use utilize
+            // .getBytes() from MultipartFile object to assign to our Skill object before passing to DAO
             Skills newSkill = new Skills(techName, file.getBytes(), user);
             skillsService.createTechnology(newSkill);
             return "File uploaded successfully! -> filename = " + file.getOriginalFilename();
@@ -46,6 +41,15 @@ public class RESTController {
             return "FAIL! Maybe You had uploaded the file before or the file's size > 500KB";
         }
     }
+
+    // Delete Mapping for removing a skill from the list of skills to be display at wmangram.com/technology
+    @DeleteMapping("/technologyList/{id}")
+    public String deleteSkill(@PathVariable("id") long id) {
+        skillsService.deleteSkill(id);
+
+        return "Skill deleted successfully!";
+    }
+
     @GetMapping("/users")
     public List<User> listUsers() {
         return userService.findUserList();
@@ -63,7 +67,6 @@ public class RESTController {
         return resumeService.getResume(1);
     }
 
-
     @PostMapping("/resumeForm/update")
     public String uploadResume(@RequestParam("resume") MultipartFile file) {
         try {
@@ -77,5 +80,4 @@ public class RESTController {
             return "FAIL! Maybe You had uploaded the file before or the file's size > 500KB";
         }
     }
-
 }

@@ -11,4 +11,6 @@ public interface SkillsService {
     List<byte[]> findLogos();
 
     Skills createTechnology(Skills skills);
+
+    void deleteSkill(long id);
 }

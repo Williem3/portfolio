@@ -9,12 +9,16 @@ import com.portfolio.entity.Skills;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,8 +74,6 @@ public class HomeController {
             List<byte[]> logo = skillsService.findLogos();
             List<String> base64List = new ArrayList<>();
 
-            boolean isBase64 = false;
-
             for (int i = 0; i < logo.size(); i++) {
                 if (Base64.isBase64(logo.get(i))) {
                     String base64Encoded = new String((logo.get(i)), "UTF-8");
@@ -107,4 +109,16 @@ public class HomeController {
         return "resume";
     }
 
+    @GetMapping("/resume/download/{fileId}")
+    public ResponseEntity<byte[]> downloadFile(@PathVariable("fileId") long fileId) {
+        Resume resumeFile = resumeService.findById(1);
+
+
+        byte[] buffer = resumeFile.getFile();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "image/jpeg");
+        headers.set("Content-Disposition", "attachment; filename=\"" + "wmangramResume" + ".jpg\"");
+        return new ResponseEntity<byte[]>(buffer, headers, HttpStatus.OK);
+    }
 }
