@@ -15,7 +15,7 @@ $( document ).ready( () => {
 			url: '/api/technologyList',
 			success: function(skills) {
 				$.each(skills, function(i, skill) {
-					$('#listFiles').append('<tr>' + '<td>' + '<button type="button" id="deletebtn" data-id="{{' + skill.id+ '}}" name="deletebtn">' + 'Delete' + '</button>'  + '</td>'+ '<td>' + skill.id + '</td>' + '<td>' + skill.logo +'</td>' + '<td>' + skill.techName + '</td></tr>')
+					$('#listFiles').append('<tr>' + '<td>' + '<button type="button" id="deletebtn" data-id="' + skill.id+ '" name="deletebtn">' + 'Delete' + '</button>'  + '</td>'+ '<td>' + skill.id + '</td>' + '<td>' + skill.logo +'</td>' + '<td>' + skill.techName + '</td></tr>')
 				})
 
 			}

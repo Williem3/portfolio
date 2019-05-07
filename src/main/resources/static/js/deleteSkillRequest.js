@@ -3,7 +3,7 @@ $(document).ready(function() {
         $("#deletebtn").on("click", function (event) {
             var id = event.target.dataset.id;
             $.ajax({
-                url:'/technologyList/' + id,
+                url:'/technologyList'+ '/' + id,
                 type:'DELETE'
             })
         })

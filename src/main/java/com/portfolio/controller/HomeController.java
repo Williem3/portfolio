@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,11 +37,13 @@ public class HomeController {
     @Autowired
     private ResumeService resumeService;
 
+    // mapping to display the index(homepage)
     @RequestMapping("/home")
     public String showHome() {
         return "index";
     }
 
+    // mapping to display the portfolio.html web page
     @RequestMapping("/portfolio")
     public String showPortfolio(Model theModel) throws IOException {
 
@@ -48,32 +51,21 @@ public class HomeController {
         return "portfolio";
     }
 
-
-    // Mappings to go to the management webpages
-    @GetMapping("/manage")
-    public String managerUsers() {
-        return "addUser";
-    }
-
-    @GetMapping("/manageTech")
-    public String manageTech() {
-        return "uploadfile";
-    }
-
-    @GetMapping("/manageResume")
-    public String manageResume() {
-        return "uploadResume";
-    }
-
+    // Mapping to display the skills list.
     @GetMapping(value = "/technology")
     public String technologyList(Model theModel) throws IOException {
 
         try {
+            // separate list to get the skill names
             List<Skills> userSkillsList = skillsService.findSkillList("wmangram");
 
+            // separate list to get the skill logos
             List<byte[]> logo = skillsService.findLogos();
+            // new list to input the logos base64 encoding
             List<String> base64List = new ArrayList<>();
 
+            // for (nested if else) statement to check whether the logo in the list is already Base64 encoded.
+            // if it is then it will add it to the base64 list, if not it will do the conversion.
             for (int i = 0; i < logo.size(); i++) {
                 if (Base64.isBase64(logo.get(i))) {
                     String base64Encoded = new String((logo.get(i)), "UTF-8");
@@ -96,6 +88,7 @@ public class HomeController {
         }
     }
 
+    // Mapping to get the resume file to display on the HTML page
     @GetMapping("/resume")
     public String showResume(Model theModel) throws IOException {
         Resume resumeInfo = resumeService.findById(1);
@@ -109,9 +102,11 @@ public class HomeController {
         return "resume";
     }
 
+
+    // Get mapping to provide download function to the resume page
     @GetMapping("/resume/download/{fileId}")
     public ResponseEntity<byte[]> downloadFile(@PathVariable("fileId") long fileId) {
-        Resume resumeFile = resumeService.findById(1);
+        Resume resumeFile = resumeService.findById(fileId);
 
 
         byte[] buffer = resumeFile.getFile();
@@ -120,5 +115,30 @@ public class HomeController {
         headers.set("Content-Type", "image/jpeg");
         headers.set("Content-Disposition", "attachment; filename=\"" + "wmangramResume" + ".jpg\"");
         return new ResponseEntity<byte[]>(buffer, headers, HttpStatus.OK);
+    }
+
+
+    // Mappings to go to the management web pages
+    @GetMapping("/manage")
+    public String managerUsers() {
+        return "addUser";
+    }
+
+    @GetMapping("/manageTech")
+    public String manageTech() {
+        return "uploadfile";
+    }
+
+    @GetMapping("/manageResume")
+    public String manageResume() {
+        return "uploadResume";
+    }
+
+
+    // remove default spring favicon
+    @GetMapping("favicon.ico")
+    @ResponseBody
+    void returnNoFavicon() {
+
     }
 }
