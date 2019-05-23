@@ -28,6 +28,7 @@ public class RESTController {
         return skillsService.getSkills();
     }
 
+    // Post mapping to add a skill with name and logo file.
     @PostMapping("/technologyList")
     public String uploadMultipartFile(@RequestParam("logo") MultipartFile file, @RequestParam("techName")String techName) {
         User user = userService.findByUsername("wmangram");
@@ -42,7 +43,7 @@ public class RESTController {
         }
     }
 
-    // Delete Mapping for removing a skill from the list of skills to be display at wmangram.com/technology
+    // Delete Mapping for removing a skill from the list of skills to be display at williemangram.com/technology
     @DeleteMapping("/technologyList/{id}")
     public String deleteSkill(@PathVariable("id") long id) {
         skillsService.deleteSkill(id);
@@ -50,11 +51,13 @@ public class RESTController {
         return "Skill deleted successfully!";
     }
 
+    // mapping to display all the users saved in the database
     @GetMapping("/users")
     public List<User> listUsers() {
         return userService.findUserList();
     }
 
+    // post mapping to create a user
     @PostMapping(value="/users")
     public void createUser(User user){
         user.setId(0);
@@ -67,6 +70,7 @@ public class RESTController {
         return resumeService.getResume(1);
     }
 
+    // same method from uploadMultipartFile to update resume with a new file. Never creates a new one.
     @PostMapping("/resumeForm/update")
     public String uploadResume(@RequestParam("resume") MultipartFile file) {
         try {

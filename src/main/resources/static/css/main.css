@@ -772,7 +772,7 @@ input, select, textarea {
 				}
 
 				.row > .col-4-large {
-					width: 33.3333333333%;
+					width: 95.3333333333%;
 				}
 
 				.row > .off-4-large {
@@ -1017,7 +1017,7 @@ input, select, textarea {
 				}
 
 				.row > .col-4-medium {
-					width: 33.3333333333%;
+					width: 95.3333333333%;
 				}
 
 				.row > .off-4-medium {
@@ -1278,7 +1278,7 @@ input, select, textarea {
 				}
 
 				.row > .col-6-small {
-					width: 50%;
+					width: 90%;
 				}
 
 				.row > .off-6-small {
@@ -2721,17 +2721,6 @@ input, select, textarea {
 				-ms-transform: translateX(0);
 				transform: translateX(0);
 			}
-		.skillsSpacing {
-			margin-right: 20px;
-			width: 100px;
-			height: 100px;
-			width: 25%;
-		}
-		.skillsNameSpacing {
-			margin-right: 30px;
-			margin-left: 30px;
-			width: 25%;
-		}
 
 	}
 
@@ -2983,6 +2972,21 @@ input, select, textarea {
 			 width: 25%;
 		 }
 	}
+
+.skill-box {
+	text-align: center;
+	padding-left: 20px;
+	margin: auto;
+
+}
+.download {
+	text-align: center;
+	margin: auto;
+}
+.resume {
+	width: 90%;
+	padding-left: 12%
+}
 
 
 
