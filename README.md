@@ -4,16 +4,27 @@ My portfolio website may be accessed through http://williemangram.com.
 
 This project was intended to bring together all that I have learned in the time that I started studying programming in January of 2019. 
 This project includes technologies such as:
+
     *  AJax
+    
     *  Javascript
+    
     *  SQL
+    
     *  Java
+    
     *  Spring Framework (Spring Boot)
+    
     *  Hibernate
+    
     *  HTML
+    
     *  CSS
+    
     *  JQuery
+    
     *  Maven
+    
     *  Spring Mail
     
 I required myself to learn new technologies while working on this project to be able to get the functions that I wanted to work the way I intended. These include Ajax, Javascript, Jquery, and CSS.
