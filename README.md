@@ -4,7 +4,7 @@ My portfolio website may be accessed through http://williemangram.com.
 
 This project was intended to bring together all that I have learned in the time that I started studying programming in January of 2019. 
 
-This project includes technologies such as:
+This project includes technologies and languages such as:
 
     *  AJax
     
