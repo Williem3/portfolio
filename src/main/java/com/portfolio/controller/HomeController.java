@@ -43,13 +43,6 @@ public class HomeController {
         return "index";
     }
 
-    // mapping to display the portfolio.html web page
-    @RequestMapping("/portfolio")
-    public String showPortfolio(Model theModel) throws IOException {
-
-
-        return "portfolio";
-    }
 
     // Mapping to display the skills list.
     @GetMapping(value = "/technology")
@@ -132,13 +125,5 @@ public class HomeController {
     @GetMapping("/manageResume")
     public String manageResume() {
         return "uploadResume";
-    }
-
-
-    // remove default spring favicon
-    @GetMapping("favicon.ico")
-    @ResponseBody
-    void returnNoFavicon() {
-
     }
 }
